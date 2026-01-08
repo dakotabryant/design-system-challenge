@@ -1,0 +1,256 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+ * APP LAYOUT STYLES
+ * ═══════════════════════════════════════════════════════════════════════════ */
+
+.app {
+  min-height: 100vh;
+  background-color: var(--ds-color-background);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * HEADER
+ * ───────────────────────────────────────────────────────────────────────── */
+
+.header {
+  border-bottom: 1px solid var(--ds-color-border);
+  background-color: var(--ds-color-surface);
+}
+
+.headerContent {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: var(--ds-spacing-4) var(--ds-spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: var(--ds-font-size-2xl);
+  font-weight: var(--ds-font-weight-bold);
+  color: var(--ds-color-text-primary);
+}
+
+.subtitle {
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-color-text-secondary);
+  margin-top: var(--ds-spacing-1);
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-spacing-1);
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-color-text-tertiary);
+}
+
+.timerIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * NAVIGATION TABS
+ * ───────────────────────────────────────────────────────────────────────── */
+
+.nav {
+  border-bottom: 1px solid var(--ds-color-border);
+  background-color: var(--ds-color-surface);
+}
+
+.navContent {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 var(--ds-spacing-6);
+  display: flex;
+  gap: var(--ds-spacing-6);
+}
+
+.tab {
+  padding: var(--ds-spacing-3) 0;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  font-size: var(--ds-font-size-sm);
+  font-weight: var(--ds-font-weight-medium);
+  color: var(--ds-color-text-secondary);
+  cursor: pointer;
+  transition: color var(--ds-transition-fast), border-color var(--ds-transition-fast);
+}
+
+.tab:hover {
+  color: var(--ds-color-text-primary);
+}
+
+.tabActive {
+  border-bottom-color: var(--ds-color-primary-600);
+  color: var(--ds-color-primary-600);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * MAIN CONTENT
+ * ───────────────────────────────────────────────────────────────────────── */
+
+.main {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: var(--ds-spacing-8) var(--ds-spacing-6);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * CHALLENGE INSTRUCTIONS CARD
+ * ───────────────────────────────────────────────────────────────────────── */
+
+.instructionsCard {
+  margin-bottom: var(--ds-spacing-8);
+  padding: var(--ds-spacing-6);
+  background-color: var(--ds-color-primary-50);
+  border: 1px solid var(--ds-color-primary-200);
+  border-radius: var(--ds-radius-xl);
+}
+
+.instructionsTitle {
+  font-size: var(--ds-font-size-lg);
+  font-weight: var(--ds-font-weight-semibold);
+  color: var(--ds-color-primary-900);
+  margin-bottom: var(--ds-spacing-3);
+}
+
+.instructionsBody {
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-color-primary-800);
+}
+
+.instructionsBody p {
+  margin-bottom: var(--ds-spacing-2);
+}
+
+.instructionsBody ul {
+  list-style: disc;
+  margin-left: var(--ds-spacing-4);
+  margin-bottom: var(--ds-spacing-2);
+}
+
+.instructionsBody li {
+  margin-bottom: var(--ds-spacing-1);
+}
+
+.code {
+  padding: 0.125rem var(--ds-spacing-2);
+  background-color: var(--ds-color-primary-100);
+  border-radius: var(--ds-radius-sm);
+  font-family: var(--ds-font-family-mono);
+  font-size: var(--ds-font-size-xs);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * REFERENCE SECTION
+ * ───────────────────────────────────────────────────────────────────────── */
+
+.referenceSection {
+  margin-bottom: var(--ds-spacing-8);
+}
+
+.sectionTitle {
+  font-size: var(--ds-font-size-xl);
+  font-weight: var(--ds-font-weight-semibold);
+  margin-bottom: var(--ds-spacing-2);
+}
+
+.sectionDescription {
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-color-text-secondary);
+  margin-bottom: var(--ds-spacing-4);
+}
+
+.codeInline {
+  padding: 0.125rem var(--ds-spacing-2);
+  background-color: var(--ds-color-neutral-100);
+  border-radius: var(--ds-radius-sm);
+  font-family: var(--ds-font-family-mono);
+  font-size: var(--ds-font-size-xs);
+}
+
+.demoCard {
+  padding: var(--ds-spacing-6);
+  background-color: var(--ds-color-surface-raised);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-xl);
+}
+
+.demoLabel {
+  font-size: var(--ds-font-size-sm);
+  font-weight: var(--ds-font-weight-medium);
+  color: var(--ds-color-text-secondary);
+  margin-bottom: var(--ds-spacing-4);
+}
+
+.demoRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ds-spacing-3);
+  margin-bottom: var(--ds-spacing-6);
+}
+
+.demoRow:last-child {
+  margin-bottom: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * DESIGN TOKENS REFERENCE
+ * ───────────────────────────────────────────────────────────────────────── */
+
+.tokensGrid {
+  display: grid;
+  gap: var(--ds-spacing-6);
+}
+
+.colorGroup {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--ds-spacing-4);
+}
+
+.colorLabel {
+  font-size: var(--ds-font-size-xs);
+  font-weight: var(--ds-font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ds-color-text-tertiary);
+  margin-bottom: var(--ds-spacing-2);
+}
+
+.colorSwatches {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.colorSwatch {
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--ds-radius-sm);
+}
+
+.spacingRow {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--ds-spacing-3);
+}
+
+.spacingItem {
+  text-align: center;
+}
+
+.spacingBox {
+  background-color: var(--ds-color-primary-500);
+  border-radius: 2px;
+  margin-bottom: var(--ds-spacing-2);
+}
+
+.spacingLabel {
+  font-size: var(--ds-font-size-xs);
+  color: var(--ds-color-text-tertiary);
+}
+

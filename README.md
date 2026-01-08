@@ -2,7 +2,7 @@
 
 A pair programming interview challenge for the **Frontend Engineer - Design Systems** role.
 
-**Stack:** React, TypeScript, Tailwind CSS  
+**Stack:** React, TypeScript, CSS (with design tokens)  
 **Duration:** 45 minutes
 
 ---
@@ -47,17 +47,41 @@ Build a reusable **Alert** component for our design system.
 | File | Description |
 |------|-------------|
 | `src/index.css` | Design tokens (colors, spacing, typography) |
-| `src/components/Button/Button.tsx` | Reference component showing patterns |
+| `src/components/Button/` | Reference component showing patterns (CSS Modules) |
 | `src/utils/icons.tsx` | Icon components you can use |
 | `src/challenge/Playground.tsx` | Test cases for your component |
 
 ### Design Token Examples
 
+```css
+/* Tokens are CSS custom properties defined in :root */
+--ds-color-info-50      /* Light background */
+--ds-color-info-500     /* Primary color */
+--ds-color-info-700     /* Dark/text color */
+
+--ds-spacing-2          /* 8px */
+--ds-spacing-4          /* 16px */
+
+--ds-radius-lg          /* 8px border radius */
+--ds-font-size-sm       /* 14px */
+```
+
 ```tsx
-// Use tokens via Tailwind's arbitrary value syntax
-<div className="bg-[var(--ds-color-info-50)]">...</div>
-<div className="p-[var(--ds-spacing-4)]">...</div>
-<div className="rounded-[var(--ds-radius-lg)]">...</div>
+// Use tokens via inline styles or CSS
+<div style={{ 
+  backgroundColor: 'var(--ds-color-info-50)',
+  padding: 'var(--ds-spacing-4)',
+  borderRadius: 'var(--ds-radius-lg)'
+}}>
+  ...
+</div>
+
+// Or with CSS Modules (see Button component for example)
+.alert {
+  background-color: var(--ds-color-info-50);
+  padding: var(--ds-spacing-4);
+  border-radius: var(--ds-radius-lg);
+}
 ```
 
 ### Expected Usage
@@ -81,7 +105,7 @@ Build a reusable **Alert** component for our design system.
 
 ---
 
-## 🛠 Project Structure
+## Project Structure
 
 ```
 src/
@@ -89,7 +113,7 @@ src/
 │   ├── Alert.tsx        # YOUR CHALLENGE - Edit this file
 │   └── Playground.tsx   # Test cases for your component
 ├── components/
-│   └── Button/          # Reference component
+│   └── Button/          # Reference component (CSS Modules pattern)
 ├── utils/
 │   └── icons.tsx        # Icon components
 ├── App.tsx              # Main app with navigation

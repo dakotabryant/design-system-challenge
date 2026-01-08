@@ -1,28 +1,18 @@
-/**
- * ╔═══════════════════════════════════════════════════════════════════════════╗
- * ║                           COMPONENT PLAYGROUND                            ║
- * ╚═══════════════════════════════════════════════════════════════════════════╝
- * 
- * Use this file to test and demonstrate your Alert component.
- * The examples here will help verify your implementation.
- */
-
 import { useState } from 'react';
 import { Alert } from './Alert';
+import styles from './Playground.module.css';
 
 export function Playground() {
   const [showDismissible, setShowDismissible] = useState(true);
 
   return (
-    <div className="space-y-[var(--ds-spacing-8)]">
+    <div className={styles.playground}>
       {/* ─────────────────────────────────────────────────────────────────────
        * SECTION: Basic Variants
        * ───────────────────────────────────────────────────────────────────── */}
-      <section>
-        <h2 className="text-[var(--ds-font-size-xl)] font-[var(--ds-font-weight-semibold)] mb-[var(--ds-spacing-4)]">
-          Basic Variants
-        </h2>
-        <div className="space-y-[var(--ds-spacing-4)]">
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Basic Variants</h2>
+        <div className={styles.alertStack}>
           <Alert variant="info">
             This is an informational alert. It provides neutral information to the user.
           </Alert>
@@ -44,11 +34,9 @@ export function Playground() {
       {/* ─────────────────────────────────────────────────────────────────────
        * SECTION: With Titles
        * ───────────────────────────────────────────────────────────────────── */}
-      <section>
-        <h2 className="text-[var(--ds-font-size-xl)] font-[var(--ds-font-weight-semibold)] mb-[var(--ds-spacing-4)]">
-          With Titles
-        </h2>
-        <div className="space-y-[var(--ds-spacing-4)]">
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>With Titles</h2>
+        <div className={styles.alertStack}>
           <Alert variant="info" title="Did you know?">
             You can customize your notification preferences in the settings panel.
           </Alert>
@@ -70,11 +58,9 @@ export function Playground() {
       {/* ─────────────────────────────────────────────────────────────────────
        * SECTION: Dismissible
        * ───────────────────────────────────────────────────────────────────── */}
-      <section>
-        <h2 className="text-[var(--ds-font-size-xl)] font-[var(--ds-font-weight-semibold)] mb-[var(--ds-spacing-4)]">
-          Dismissible
-        </h2>
-        <div className="space-y-[var(--ds-spacing-4)]">
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Dismissible</h2>
+        <div className={styles.alertStack}>
           {showDismissible ? (
             <Alert 
               variant="info" 
@@ -87,15 +73,7 @@ export function Playground() {
           ) : (
             <button
               onClick={() => setShowDismissible(true)}
-              className="
-                px-[var(--ds-spacing-4)] 
-                py-[var(--ds-spacing-2)] 
-                bg-[var(--ds-color-primary-600)] 
-                text-white 
-                rounded-[var(--ds-radius-lg)]
-                hover:bg-[var(--ds-color-primary-700)]
-                transition-colors
-              "
+              className={styles.resetButton}
             >
               Show Dismissed Alert
             </button>
@@ -106,11 +84,9 @@ export function Playground() {
       {/* ─────────────────────────────────────────────────────────────────────
        * SECTION: Real-world Examples
        * ───────────────────────────────────────────────────────────────────── */}
-      <section>
-        <h2 className="text-[var(--ds-font-size-xl)] font-[var(--ds-font-weight-semibold)] mb-[var(--ds-spacing-4)]">
-          Real-world Examples
-        </h2>
-        <div className="space-y-[var(--ds-spacing-4)]">
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Real-world Examples</h2>
+        <div className={styles.alertStack}>
           <Alert variant="info" title="New feature available">
             We've added dark mode support! Enable it in your profile settings to try it out.
           </Alert>
@@ -130,4 +106,3 @@ export function Playground() {
 }
 
 export default Playground;
-

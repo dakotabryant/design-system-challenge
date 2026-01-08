@@ -1,0 +1,41 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+ * PLAYGROUND STYLES
+ * ═══════════════════════════════════════════════════════════════════════════ */
+
+.playground {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-8);
+}
+
+.section {
+  margin-bottom: 0;
+}
+
+.sectionTitle {
+  font-size: var(--ds-font-size-xl);
+  font-weight: var(--ds-font-weight-semibold);
+  margin-bottom: var(--ds-spacing-4);
+}
+
+.alertStack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-4);
+}
+
+.resetButton {
+  display: inline-block;
+  padding: var(--ds-spacing-2) var(--ds-spacing-4);
+  background-color: var(--ds-color-primary-600);
+  color: white;
+  border: none;
+  border-radius: var(--ds-radius-lg);
+  cursor: pointer;
+  transition: background-color var(--ds-transition-fast);
+}
+
+.resetButton:hover {
+  background-color: var(--ds-color-primary-700);
+}
+

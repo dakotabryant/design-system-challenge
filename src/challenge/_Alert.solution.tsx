@@ -16,7 +16,7 @@
  * - Code organization
  */
 
-import { type ReactNode } from 'react';
+import { type ReactNode, type CSSProperties } from 'react';
 import { 
   IconInfo, 
   IconCheckCircle, 
@@ -46,34 +46,46 @@ export interface AlertProps {
 
 // Variant-specific styling using design tokens
 const variantStyles: Record<AlertVariant, {
-  container: string;
-  icon: string;
-  title: string;
-  body: string;
+  container: CSSProperties;
+  icon: CSSProperties;
+  title: CSSProperties;
+  body: CSSProperties;
 }> = {
   info: {
-    container: 'bg-[var(--ds-color-info-50)] border-[var(--ds-color-info-200)]',
-    icon: 'text-[var(--ds-color-info-500)]',
-    title: 'text-[var(--ds-color-info-800)]',
-    body: 'text-[var(--ds-color-info-700)]',
+    container: { 
+      backgroundColor: 'var(--ds-color-info-50)', 
+      borderColor: 'var(--ds-color-info-200)' 
+    },
+    icon: { color: 'var(--ds-color-info-500)' },
+    title: { color: 'var(--ds-color-info-800)' },
+    body: { color: 'var(--ds-color-info-700)' },
   },
   success: {
-    container: 'bg-[var(--ds-color-success-50)] border-[var(--ds-color-success-200)]',
-    icon: 'text-[var(--ds-color-success-500)]',
-    title: 'text-[var(--ds-color-success-800)]',
-    body: 'text-[var(--ds-color-success-700)]',
+    container: { 
+      backgroundColor: 'var(--ds-color-success-50)', 
+      borderColor: 'var(--ds-color-success-200)' 
+    },
+    icon: { color: 'var(--ds-color-success-500)' },
+    title: { color: 'var(--ds-color-success-800)' },
+    body: { color: 'var(--ds-color-success-700)' },
   },
   warning: {
-    container: 'bg-[var(--ds-color-warning-50)] border-[var(--ds-color-warning-200)]',
-    icon: 'text-[var(--ds-color-warning-500)]',
-    title: 'text-[var(--ds-color-warning-800)]',
-    body: 'text-[var(--ds-color-warning-700)]',
+    container: { 
+      backgroundColor: 'var(--ds-color-warning-50)', 
+      borderColor: 'var(--ds-color-warning-200)' 
+    },
+    icon: { color: 'var(--ds-color-warning-500)' },
+    title: { color: 'var(--ds-color-warning-800)' },
+    body: { color: 'var(--ds-color-warning-700)' },
   },
   error: {
-    container: 'bg-[var(--ds-color-error-50)] border-[var(--ds-color-error-200)]',
-    icon: 'text-[var(--ds-color-error-500)]',
-    title: 'text-[var(--ds-color-error-800)]',
-    body: 'text-[var(--ds-color-error-700)]',
+    container: { 
+      backgroundColor: 'var(--ds-color-error-50)', 
+      borderColor: 'var(--ds-color-error-200)' 
+    },
+    icon: { color: 'var(--ds-color-error-500)' },
+    title: { color: 'var(--ds-color-error-800)' },
+    body: { color: 'var(--ds-color-error-700)' },
   },
 };
 
@@ -83,6 +95,54 @@ const variantIcons: Record<AlertVariant, typeof IconInfo> = {
   success: IconCheckCircle,
   warning: IconExclamation,
   error: IconXCircle,
+};
+
+// Base styles using tokens
+const baseStyles: Record<string, CSSProperties> = {
+  container: {
+    display: 'flex',
+    gap: 'var(--ds-spacing-3)',
+    padding: 'var(--ds-spacing-4)',
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderRadius: 'var(--ds-radius-lg)',
+  },
+  iconWrapper: {
+    flexShrink: 0,
+  },
+  icon: {
+    width: '1.25rem',
+    height: '1.25rem',
+  },
+  content: {
+    flex: 1,
+    minWidth: 0,
+  },
+  title: {
+    fontSize: 'var(--ds-font-size-sm)',
+    fontWeight: 'var(--ds-font-weight-semibold)',
+  },
+  body: {
+    fontSize: 'var(--ds-font-size-sm)',
+  },
+  actions: {
+    marginTop: 'var(--ds-spacing-3)',
+    display: 'flex',
+    gap: 'var(--ds-spacing-3)',
+  },
+  dismissButton: {
+    flexShrink: 0,
+    padding: 'var(--ds-spacing-1)',
+    border: 'none',
+    borderRadius: 'var(--ds-radius-md)',
+    background: 'transparent',
+    cursor: 'pointer',
+    transition: 'background-color var(--ds-transition-fast)',
+  },
+  dismissIcon: {
+    width: '1rem',
+    height: '1rem',
+  },
 };
 
 export function AlertSolution({
@@ -100,44 +160,39 @@ export function AlertSolution({
   return (
     <div
       role="alert"
-      className={`
-        flex
-        gap-[var(--ds-spacing-3)]
-        p-[var(--ds-spacing-4)]
-        border
-        rounded-[var(--ds-radius-lg)]
-        ${styles.container}
-        ${className}
-      `}
+      className={className}
+      style={{
+        ...baseStyles.container,
+        ...styles.container,
+      }}
     >
       {/* Icon */}
-      <div className={`shrink-0 ${styles.icon}`}>
-        <Icon className="w-5 h-5" />
+      <div style={{ ...baseStyles.iconWrapper, ...styles.icon }}>
+        <Icon style={baseStyles.icon} />
       </div>
 
       {/* Content */}
-      <div className="flex-1 min-w-0">
+      <div style={baseStyles.content}>
         {title && (
           <h3 
-            className={`
-              text-[var(--ds-font-size-sm)] 
-              font-[var(--ds-font-weight-semibold)]
-              ${styles.title}
-              ${children ? 'mb-[var(--ds-spacing-1)]' : ''}
-            `}
+            style={{
+              ...baseStyles.title,
+              ...styles.title,
+              marginBottom: children ? 'var(--ds-spacing-1)' : 0,
+            }}
           >
             {title}
           </h3>
         )}
         
         {children && (
-          <div className={`text-[var(--ds-font-size-sm)] ${styles.body}`}>
+          <div style={{ ...baseStyles.body, ...styles.body }}>
             {children}
           </div>
         )}
 
         {actions && (
-          <div className="mt-[var(--ds-spacing-3)] flex gap-[var(--ds-spacing-3)]">
+          <div style={baseStyles.actions}>
             {actions}
           </div>
         )}
@@ -148,18 +203,19 @@ export function AlertSolution({
         <button
           type="button"
           onClick={onDismiss}
-          className={`
-            shrink-0
-            p-[var(--ds-spacing-1)]
-            rounded-[var(--ds-radius-md)]
-            ${styles.icon}
-            hover:bg-black/5
-            focus-ring
-            transition-colors
-          `}
+          style={{
+            ...baseStyles.dismissButton,
+            ...styles.icon,
+          }}
           aria-label="Dismiss alert"
+          onMouseOver={(e) => {
+            e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.05)';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.backgroundColor = 'transparent';
+          }}
         >
-          <IconX className="w-4 h-4" />
+          <IconX style={baseStyles.dismissIcon} />
         </button>
       )}
     </div>
@@ -167,4 +223,3 @@ export function AlertSolution({
 }
 
 export default AlertSolution;
-
